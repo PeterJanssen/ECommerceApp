@@ -13,6 +13,7 @@ namespace API.Extensions
             var email = ClaimsPrincipleExtensions.RetrieveEmailFromPrincipal(user);
 
             return await input.Users
+            .Include(x => x.Address)
             .SingleOrDefaultAsync(x => x.Email == email);
         }
 
